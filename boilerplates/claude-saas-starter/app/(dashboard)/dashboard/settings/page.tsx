@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { ManageBillingButton } from '@/components/billing/manage-billing-button'
 import { getSubscriptionStatus } from '@/lib/stripe/server'
+import { UsageStats } from '@/components/usage/usage-stats'
 
 export default async function SettingsPage() {
   const supabase = await createClient()
@@ -54,6 +55,9 @@ export default async function SettingsPage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Usage Stats */}
+        <UsageStats />
 
         {/* Billing Info */}
         <Card>

@@ -2,33 +2,27 @@
 
 > Système complet pour lancer Claude SaaS Starter et générer $1.5-3K en 60 jours
 
-**Status**: Prêt à exécuter
+**Status**: LAUNCH EN COURS (Feb 8-13)
 **Created**: 2026-01-28
-**Campaign**: Pre-Launch (Days 1-14) → Launch (Day 15) → Post-Launch (Days 16-60)
+**Updated**: 2026-02-08
+**Campaign**: Staggered Launch (6 channels, 6 days) → Post-Launch (60 days)
 
 ---
 
-## 🚀 Quick Start (Do This NOW)
+## Current Status
 
-**Tu as 3 actions immédiates**:
+### Completed (Feb 8-9)
+- [x] Gumroad product LIVE (bydaewon.gumroad.com/l/claude-saas-starter)
+- [x] Twitter @bydaewon bio + 1 pinned tweet
+- [x] Reddit r/SideProject post published
+- [x] Product Hunt account created + engagement
+- [x] All content assets ready (see `content/` folder)
 
-1. **Setup Gumroad** (30 min) → [`guides/gumroad-setup.md`](guides/gumroad-setup.md)
-   - Crée le produit
-   - Upload le ZIP
-   - Prix $149 + coupon LAUNCH20
-
-2. **Prep Product Hunt** (1h) → [`templates/product-hunt.md`](templates/product-hunt.md)
-   - Create account
-   - Draft listing (copy-paste from template)
-   - Take 5 screenshots
-
-3. **Twitter Setup** (30 min) → [`checklists/pre-launch.md`](checklists/pre-launch.md)
-   - Create/optimize profile
-   - Post announcement thread (Day 1 template)
-   - Follow 50-100 indie makers
-
-**Total time**: 2h
-**After this**: Tu es prêt pour la campagne 14 jours
+### Remaining Launch Days
+- [ ] **Mon 10 Feb**: Show HN (`content/show-hn-post.md`)
+- [ ] **Tue 11 Feb**: Dev.to article + Reddit r/ClaudeAI (`content/devto-article.md`, `content/reddit-posts.md`)
+- [ ] **Wed 12 Feb**: Product Hunt launch (`content/product-hunt-submission.md`)
+- [ ] **Thu 13 Feb**: Reddit r/nextjs + Twitter bilan (`content/reddit-posts.md`)
 
 ---
 
@@ -46,26 +40,37 @@
 |------|-------------|------|------|
 | [`guides/gumroad-setup.md`](guides/gumroad-setup.md) | Create product page (step-by-step) | 30 min | Day 1 (NOW) |
 
-### Templates (Copy-Paste Ready)
+### Templates (Original Templates)
 
 | File | Description | Count | Use |
 |------|-------------|-------|-----|
-| [`templates/twitter-threads.md`](templates/twitter-threads.md) | Pre-launch Twitter posts | 10 threads | Days 1-14 |
-| [`templates/product-hunt.md`](templates/product-hunt.md) | PH listing + launch kit | Complete | Day 15 |
+| [`templates/twitter-threads.md`](templates/twitter-threads.md) | Twitter post templates | 10 threads | Reference |
+| [`templates/product-hunt.md`](templates/product-hunt.md) | PH launch kit (original) | Complete | Reference |
+
+### Launch Content (Copy-Paste Ready)
+
+| File | Description | Channel | Date |
+|------|-------------|---------|------|
+| [`content/reddit-posts.md`](content/reddit-posts.md) | 3 Reddit posts adapted per sub | r/SideProject, r/ClaudeAI, r/nextjs | Feb 8, 11, 13 |
+| [`content/show-hn-post.md`](content/show-hn-post.md) | Show HN + maker comment | Hacker News | Feb 10 |
+| [`content/devto-article.md`](content/devto-article.md) | Technical article (Claude streaming) | Dev.to | Feb 11 |
+| [`content/product-hunt-submission.md`](content/product-hunt-submission.md) | Finalized PH submission | Product Hunt | Feb 12 |
 
 ---
 
-## 🎯 Campaign Overview
+## Campaign Overview
 
-### Three Phases
+### Actual Strategy (Adapted)
 
 ```
-Pre-Launch (Days 1-14)    Launch (Day 15)    Post-Launch (Days 16-60)
-Build audience         →  Product Hunt     →  Sustain momentum
-Twitter daily             Top 10 goal          3x/week content
-Hunter recruitment        Multi-channel        Customer testimonials
-Email collection          1-5 sales            10-20 total sales
+Staggered Launch (Feb 8-13)     Post-Launch (Feb 14 - Apr 8)
+1 channel/day for 6 days    →   Sustain momentum
+Reddit → HN → Dev.to → PH       3x/week content
+Cold start (no pre-audience)     Customer testimonials
+Build momentum progressively     10-20 total sales
 ```
+
+**Why adapted**: No pre-launch audience (14-day warmup skipped). Twitter dormant (113 followers). Communities first for immediate visibility.
 
 ### Goals
 
@@ -94,41 +99,16 @@ Email collection          1-5 sales            10-20 total sales
 
 ---
 
-## 📅 Timeline (Next 14 Days)
+## Launch Timeline (Feb 8-13)
 
-### Week 1: Foundation (Days 1-7)
-
-**Day 1** (TODAY):
-- [ ] ✅ Gumroad setup (30 min)
-- [ ] ✅ Product Hunt prep (1h)
-- [ ] ✅ Twitter announcement (30 min)
-
-**Day 2-3**:
-- [ ] Twitter content (2 threads)
-- [ ] Email list setup (1h)
-- [ ] Engagement routine (20 min/day)
-
-**Day 4-7**:
-- [ ] Daily Twitter posts (1x/day)
-- [ ] DM outreach (10-20 people/day)
-- [ ] Product Hunt assets (screenshots, GIF)
-
-### Week 2: Momentum (Days 8-14)
-
-**Day 8-10**:
-- [ ] Hunter recruitment (20-30 DMs)
-- [ ] Final PH assets (demo video)
-- [ ] Indie Hackers post
-
-**Day 11-13**:
-- [ ] Launch countdown posts
-- [ ] Supporter DMs (50-100)
-- [ ] Email sequence draft
-
-**Day 14**:
-- [ ] Final pre-launch check
-- [ ] Set alarms (12:01am PST)
-- [ ] Sleep early (launch at midnight!)
+| Day | Date | Channel | Content File | Status |
+|-----|------|---------|-------------|--------|
+| 1 | Sat 8 Feb | Reddit r/SideProject + Twitter | `content/reddit-posts.md` | ✅ Done |
+| 2 | Sun 9 Feb | PH account setup + engagement | — | ✅ Done |
+| 3 | Mon 10 Feb | Hacker News (Show HN, 9-10am EST) | `content/show-hn-post.md` | Pending |
+| 4 | Tue 11 Feb | Dev.to + Reddit r/ClaudeAI | `content/devto-article.md` + `content/reddit-posts.md` | Pending |
+| 5 | Wed 12 Feb | Product Hunt (9:01am CET) | `content/product-hunt-submission.md` | Pending |
+| 6 | Thu 13 Feb | Reddit r/nextjs + Twitter bilan | `content/reddit-posts.md` | Pending |
 
 ---
 
@@ -361,27 +341,21 @@ Track small milestones:
 
 ---
 
-## 🎯 Next Steps (Right Now)
+## Next Steps
 
-**Action Priority**:
+**Prochaine session** (Lundi 10 fev) :
 
-1. **NOW** (30 min): [`guides/gumroad-setup.md`](guides/gumroad-setup.md)
-   - Create Gumroad product
-   - Upload ZIP
-   - Set pricing + coupon
+1. **Show HN** (9-10am EST / 15-16h Paris) — `content/show-hn-post.md`
+   - Poster le lien Gumroad + maker comment
+   - Rester disponible 4-6h pour engager
 
-2. **TODAY** (1h): [`templates/product-hunt.md`](templates/product-hunt.md)
-   - Create PH account
-   - Draft listing
-   - Take 3-5 screenshots
+2. **Mardi 11 fev** — Dev.to + r/ClaudeAI
+   - Publier l'article technique
+   - Poster sur r/ClaudeAI
 
-3. **TODAY** (30 min): [`templates/twitter-threads.md`](templates/twitter-threads.md)
-   - Post Day 1 announcement thread
-   - Follow 50 indie makers
-   - Engage with 10 posts
-
-**Total today**: 2h
-**Result**: Campaign officially started 🚀
+3. **Mercredi 12 fev** — Product Hunt
+   - Soumettre via `content/product-hunt-submission.md`
+   - Engager toute la journee
 
 ---
 
@@ -395,6 +369,6 @@ Track small milestones:
 
 ---
 
-**Let's make this launch happen** 🚀
+**Launch en cours** — staggered across 6 channels, Feb 8-13.
 
-*Last updated: 2026-01-28*
+*Last updated: 2026-02-08*

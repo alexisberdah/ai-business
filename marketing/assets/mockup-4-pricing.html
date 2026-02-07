@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1270, initial-scale=1">
+<title>Pricing — Claude SaaS Starter</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body { font-family: 'Inter', sans-serif; margin: 0; }</style>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        background: '#ffffff',
+        foreground: '#0a0a0a',
+        card: '#ffffff',
+        primary: '#171717',
+        'primary-foreground': '#fafafa',
+        muted: '#f5f5f5',
+        'muted-foreground': '#737373',
+        border: '#e5e5e5',
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+<div style="width:1270px;height:760px;overflow:hidden;" class="bg-background">
+
+  <!-- Nav -->
+  <nav class="border-b px-8 py-4 flex justify-between items-center">
+    <span class="text-lg font-bold">Claude SaaS Starter</span>
+    <div class="flex gap-4 items-center">
+      <a class="text-sm text-muted-foreground">Home</a>
+      <a class="text-sm font-medium">Pricing</a>
+      <a class="text-sm text-muted-foreground">Docs</a>
+      <a class="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-lg font-medium">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="px-4 py-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-4">
+        Ship Your AI SaaS <span class="text-primary">in Days</span>
+      </h1>
+      <p class="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+        The only Next.js boilerplate optimized specifically for Claude Sonnet 4.5.<br>
+        Production-ready, fully documented, and ready to deploy.
+      </p>
+
+      <!-- Plans -->
+      <div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
+
+        <!-- Monthly -->
+        <div class="bg-card rounded-xl border p-8 text-left">
+          <h3 class="text-xl font-semibold mb-1">Monthly</h3>
+          <p class="text-sm text-muted-foreground mb-4">Perfect for trying out the starter</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">$149</span>
+            <span class="text-muted-foreground">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Full Claude SaaS Starter codebase</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Supabase Auth integration</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Claude API streaming</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Stripe billing setup</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">shadcn/ui components</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Complete documentation</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">Lifetime updates</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm">1 year of support</span>
+            </li>
+          </ul>
+          <button class="w-full py-3 border rounded-lg text-sm font-medium hover:bg-muted transition">Get Started</button>
+        </div>
+
+        <!-- Yearly (Popular) -->
+        <div class="bg-card rounded-xl border-2 border-primary shadow-lg p-0 text-left overflow-hidden">
+          <div class="bg-primary text-primary-foreground text-center py-2 text-sm font-medium">Most Popular</div>
+          <div class="p-8">
+            <h3 class="text-xl font-semibold mb-1">Yearly</h3>
+            <p class="text-sm text-muted-foreground mb-4">Best value for serious builders</p>
+            <div class="mb-6">
+              <span class="text-4xl font-bold">$1,490</span>
+              <span class="text-muted-foreground">/year</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Everything in Monthly</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Priority support</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Early access to new features</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Custom integrations help</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Architecture consultation (1h)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Code review (optional)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Private Discord access</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-5 h-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm">Lifetime updates</span>
+              </li>
+            </ul>
+            <button class="w-full py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium">Get Started</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guarantees -->
+      <div class="mt-10 flex justify-center gap-8 text-sm text-muted-foreground">
+        <span>&#x2713; 14-day money-back guarantee</span>
+        <span>&#x2713; Secure payment via Stripe</span>
+        <span>&#x2713; Instant access after purchase</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

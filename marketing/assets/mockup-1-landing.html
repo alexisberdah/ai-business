@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1270, initial-scale=1">
+<title>Landing Page — Claude SaaS Starter</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; margin: 0; }
+</style>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        background: '#ffffff',
+        foreground: '#0a0a0a',
+        card: '#ffffff',
+        'card-foreground': '#0a0a0a',
+        primary: '#171717',
+        'primary-foreground': '#fafafa',
+        secondary: '#f5f5f5',
+        'secondary-foreground': '#171717',
+        muted: '#f5f5f5',
+        'muted-foreground': '#737373',
+        border: '#e5e5e5',
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+<div style="width:1270px;height:760px;overflow:hidden;" class="bg-gradient-to-br from-slate-50 to-slate-100">
+
+  <!-- Nav -->
+  <nav class="border-b bg-white/80 backdrop-blur px-8 py-4 flex justify-between items-center">
+    <span class="text-lg font-bold text-foreground">Claude SaaS Starter</span>
+    <div class="flex gap-4 items-center">
+      <a class="text-sm text-muted-foreground hover:text-foreground">Pricing</a>
+      <a class="text-sm text-muted-foreground hover:text-foreground">Docs</a>
+      <a class="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-lg font-medium">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="text-center max-w-4xl mx-auto pt-16 pb-12 px-4">
+    <div class="inline-flex items-center gap-2 bg-white border rounded-full px-4 py-1.5 mb-8 shadow-sm">
+      <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+      <span class="text-sm text-muted-foreground">Production-ready boilerplate</span>
+    </div>
+    <h1 class="text-5xl font-bold tracking-tight mb-6 text-foreground">
+      Claude SaaS Starter
+    </h1>
+    <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+      The fastest way to build and launch AI-powered SaaS products with Claude Sonnet 4.5
+    </p>
+    <div class="flex gap-4 justify-center">
+      <button class="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-base shadow-sm">Get Started</button>
+      <button class="px-6 py-3 bg-white border border-border text-foreground rounded-lg font-medium text-base">Sign In</button>
+    </div>
+  </div>
+
+  <!-- Feature cards -->
+  <div class="grid grid-cols-3 gap-6 max-w-5xl mx-auto px-8">
+    <!-- Auth -->
+    <div class="bg-white rounded-xl border shadow-sm p-6">
+      <div class="text-2xl mb-3">&#x1f512;</div>
+      <h3 class="font-semibold text-lg mb-1">Authentication</h3>
+      <p class="text-sm text-muted-foreground mb-3">Secure auth with Supabase</p>
+      <ul class="text-sm space-y-1.5 text-muted-foreground">
+        <li>&#x2022; Email/password authentication</li>
+        <li>&#x2022; OAuth (Google, GitHub)</li>
+        <li>&#x2022; Protected routes with middleware</li>
+        <li>&#x2022; Session management</li>
+      </ul>
+    </div>
+    <!-- Claude -->
+    <div class="bg-white rounded-xl border shadow-sm p-6">
+      <div class="text-2xl mb-3">&#x1f916;</div>
+      <h3 class="font-semibold text-lg mb-1">Claude Integration</h3>
+      <p class="text-sm text-muted-foreground mb-3">Streaming AI by Claude Sonnet 4.5</p>
+      <ul class="text-sm space-y-1.5 text-muted-foreground">
+        <li>&#x2022; Real-time streaming responses</li>
+        <li>&#x2022; Server-Sent Events (SSE)</li>
+        <li>&#x2022; Type-safe React hooks</li>
+        <li>&#x2022; Optimized API routes</li>
+      </ul>
+    </div>
+    <!-- Billing -->
+    <div class="bg-white rounded-xl border shadow-sm p-6">
+      <div class="text-2xl mb-3">&#x1f4b3;</div>
+      <h3 class="font-semibold text-lg mb-1">Stripe Billing</h3>
+      <p class="text-sm text-muted-foreground mb-3">Revenue-ready from day one</p>
+      <ul class="text-sm space-y-1.5 text-muted-foreground">
+        <li>&#x2022; Subscription management</li>
+        <li>&#x2022; Webhook handling</li>
+        <li>&#x2022; Usage metering</li>
+        <li>&#x2022; Customer portal</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tech badges -->
+  <div class="flex justify-center gap-3 mt-10 px-8">
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">Next.js 16</span>
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">TypeScript</span>
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">Tailwind CSS 4</span>
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">shadcn/ui</span>
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">Supabase</span>
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">Claude Sonnet 4.5</span>
+    <span class="px-3 py-1.5 bg-white rounded-lg border text-sm shadow-sm">Stripe</span>
+  </div>
+</div>
+</body>
+</html>

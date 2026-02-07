@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1270, initial-scale=1">
+<title>Chat Interface — Claude SaaS Starter</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; margin: 0; }
+  @keyframes bounce1 { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-6px); } }
+  @keyframes bounce2 { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-6px); } }
+  @keyframes bounce3 { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-6px); } }
+  .dot1 { animation: bounce1 1.2s infinite; }
+  .dot2 { animation: bounce2 1.2s infinite; animation-delay: 0.15s; }
+  .dot3 { animation: bounce3 1.2s infinite; animation-delay: 0.3s; }
+</style>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        background: '#ffffff',
+        foreground: '#0a0a0a',
+        card: '#ffffff',
+        primary: '#171717',
+        'primary-foreground': '#fafafa',
+        muted: '#f5f5f5',
+        'muted-foreground': '#737373',
+        border: '#e5e5e5',
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+<div style="width:1270px;height:760px;overflow:hidden;" class="bg-background flex">
+
+  <!-- Sidebar -->
+  <div class="w-64 border-r bg-muted/30 p-4 flex flex-col">
+    <div class="font-bold text-lg mb-6 px-2">Claude SaaS</div>
+    <nav class="space-y-1">
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-muted-foreground">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+        Dashboard
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h4l3-7 3 14 3-7h4"/></svg>
+        Chat
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-muted-foreground">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+        Settings
+      </a>
+    </nav>
+    <div class="mt-auto pt-4 border-t">
+      <div class="flex items-center gap-3 px-2">
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold">DK</div>
+        <div>
+          <div class="text-sm font-medium">Daewon Kim</div>
+          <div class="text-xs text-muted-foreground">Pro Plan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <div class="border-b px-8 py-4 flex justify-between items-center">
+      <div>
+        <h2 class="text-2xl font-bold">Claude Chat</h2>
+        <p class="text-sm text-muted-foreground">Powered by Claude Sonnet 4.5</p>
+      </div>
+      <button class="px-4 py-2 text-sm border rounded-lg text-muted-foreground">Clear chat</button>
+    </div>
+
+    <!-- Messages -->
+    <div class="flex-1 overflow-y-auto p-8 space-y-4">
+
+      <!-- User message 1 -->
+      <div class="flex justify-end">
+        <div class="max-w-[70%] bg-primary text-primary-foreground rounded-lg px-4 py-3">
+          <p class="text-sm">Can you help me build a user onboarding flow for my SaaS? I want a multi-step wizard with progress tracking.</p>
+          <p class="text-xs opacity-50 mt-1.5">2:14 PM</p>
+        </div>
+      </div>
+
+      <!-- Assistant message 1 -->
+      <div class="flex justify-start">
+        <div class="max-w-[70%] bg-muted rounded-lg px-4 py-3">
+          <p class="text-sm leading-relaxed">I'd be happy to help you build a multi-step onboarding wizard! Here's a clean approach using React state and your existing shadcn/ui components:
+
+<strong>1. Create the wizard container:</strong>
+
+A parent component that tracks the current step and renders the appropriate child. We'll use a simple state machine pattern.</p>
+          <div class="mt-3 bg-gray-900 rounded-lg p-4">
+            <pre class="text-xs text-green-400 font-mono leading-relaxed"><code>const [step, setStep] = useState(1)
+const totalSteps = 4
+
+const progress = (step / totalSteps) * 100
+
+return (
+  &lt;Card&gt;
+    &lt;Progress value={progress} /&gt;
+    {step === 1 && &lt;WelcomeStep /&gt;}
+    {step === 2 && &lt;ProfileStep /&gt;}
+    {step === 3 && &lt;PreferencesStep /&gt;}
+    {step === 4 && &lt;CompleteStep /&gt;}
+  &lt;/Card&gt;
+)</code></pre>
+          </div>
+          <p class="text-xs opacity-50 mt-2">2:14 PM</p>
+        </div>
+      </div>
+
+      <!-- User message 2 -->
+      <div class="flex justify-end">
+        <div class="max-w-[70%] bg-primary text-primary-foreground rounded-lg px-4 py-3">
+          <p class="text-sm">That's great! How do I persist the progress if the user leaves and comes back?</p>
+          <p class="text-xs opacity-50 mt-1.5">2:15 PM</p>
+        </div>
+      </div>
+
+      <!-- Streaming response (in progress) -->
+      <div class="flex justify-start">
+        <div class="max-w-[70%] bg-muted rounded-lg px-4 py-3">
+          <p class="text-sm leading-relaxed">Great question! You have a few options for persisting onboarding progress:
+
+<strong>Option 1: Supabase (recommended)</strong>
+Store the step in your user metadata. Since you already have Supabase auth set up, this is the cleanest approach:</p>
+          <div class="mt-3 bg-gray-900 rounded-lg p-4">
+            <pre class="text-xs text-green-400 font-mono leading-relaxed"><code>// Save progress
+await supabase.auth.updateUser({
+  data: { onboarding_step: step }
+})
+
+// Restore on mount
+const { data: { user } } = await supabase
+  .auth.getUser()
+setStep(user.user_metadata.onboarding_step ?? 1)</code></pre>
+          </div>
+          <p class="text-sm leading-relaxed mt-3"><strong>Option 2: localStorage (simpler)</strong>
+If you don't need cross-device sync, localStorage works fine for</p>
+
+          <!-- Streaming cursor -->
+          <span class="inline-block w-0.5 h-4 bg-primary animate-pulse ml-0.5" style="vertical-align: text-bottom;"></span>
+
+          <!-- Typing indicator below -->
+          <div class="flex gap-1 mt-3">
+            <div class="w-2 h-2 bg-gray-400 rounded-full dot1"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full dot2"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full dot3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="border-t p-4">
+      <div class="flex gap-3">
+        <textarea class="flex-1 min-h-[52px] px-4 py-3 border rounded-lg resize-none text-sm bg-background" placeholder="Type your message... (Shift+Enter for new line)"></textarea>
+        <button class="self-end px-5 py-3 bg-muted text-muted-foreground rounded-lg text-sm font-medium" disabled>Sending...</button>
+      </div>
+      <p class="text-xs text-muted-foreground mt-2 px-1">Press Enter to send, Shift+Enter for new line</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

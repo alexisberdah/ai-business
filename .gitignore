@@ -61,11 +61,13 @@ Thumbs.db
 tmp/
 temp/
 
-# Secrets
+# Secrets & Credentials
 secrets/
+.credentials/
 *.key
 *.pem
 credentials.json
+*.credentials
 
 # Build artifacts
 *.tgz

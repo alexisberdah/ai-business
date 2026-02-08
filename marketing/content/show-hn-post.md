@@ -2,7 +2,7 @@
 
 > Draft pour Hacker News. Ton technique et humble. Pas de marketing.
 
-**Timing** : Lundi 10 fév, 9-10am EST (15-16h Paris)
+**Timing** : Lundi 9 fév, 23h KST (9am EST)
 
 ---
 

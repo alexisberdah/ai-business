@@ -67,7 +67,7 @@ Would love honest feedback — both positive and critical.
 
 ---
 
-## 2. r/ClaudeAI (Mardi 11 fév)
+## 2. r/ClaudeAI (Lundi 9 fév — 10am KST)
 
 **Community technique Claude. Focus sur les détails spécifiques à l'API Anthropic.**
 
@@ -123,7 +123,7 @@ Happy to answer any technical questions about the Claude streaming implementatio
 
 ---
 
-## 3. r/nextjs (Jeudi 13 fév)
+## 3. r/nextjs (Mardi 10 fév — 10am KST)
 
 **100% technique. Architecture walkthrough. Mention produit minimale.**
 

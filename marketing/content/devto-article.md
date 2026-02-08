@@ -1,6 +1,6 @@
 # Building a Production-Ready Claude Streaming API with Next.js Edge Runtime
 
-> Article technique pour Dev.to. Publish mardi 11 fév.
+> Article technique pour Dev.to. Publish lundi 9 fév (10am KST).
 > Tags: #nextjs #claude #ai #webdev
 
 ---

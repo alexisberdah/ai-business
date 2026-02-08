@@ -91,7 +91,7 @@ Happy to answer any technical questions about the Claude streaming implementatio
 
 ---
 
-## Launch Day Checklist (Mercredi 12 fev)
+## Launch Day Checklist (Jeudi 12 fev)
 
 ### Timing
 

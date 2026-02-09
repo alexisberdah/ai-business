@@ -1,6 +1,7 @@
-# Product Hunt Submission — FINAL (Ready to Submit)
+# Product Hunt Submission — REVISED (GitHub-First Strategy)
 
-> Copy-paste chaque section dans le formulaire PH le mercredi 12 fev.
+> Postponed from Feb 12 to ~Feb 20 (Thu).
+> Now references GitHub repo as primary asset.
 > Compte PH : @bydaewon (cree via Twitter)
 
 ---
@@ -20,26 +21,28 @@ Launch your Claude-powered SaaS in 2 hours
 ## Website URL
 
 ```
-https://bydaewon.gumroad.com/l/claude-saas-starter
+https://github.com/alexisberdah/claude-streaming-nextjs
 ```
 
-## Description (236/260 characters)
+> Note: Primary link is the FREE GitHub repo. Gumroad link in description/maker comment.
+
+## Description (255/260 characters)
 
 ```
-The only Next.js boilerplate built for Claude Sonnet 4.5. Auth, real-time streaming, Stripe billing, admin dashboard, 40 tests, and 1,300+ lines of documentation. Go from git clone to production in hours, not weeks.
+Open-source Claude streaming module (SSE + React hook) + full production SaaS boilerplate. Auth, real-time AI streaming, Stripe billing, admin dashboard, 40 tests, 1,300+ lines of docs. Free core, paid full stack.
 ```
 
 ## Topics (select these 4)
 
 1. Developer Tools
-2. SaaS
+2. Open Source
 3. Artificial Intelligence
-4. Tech
+4. SaaS
 
 ## Pricing
 
 ```
-$149 (one-time purchase)
+Free (open-source core) / $149 (full boilerplate)
 ```
 
 ## Gallery (5 images, order matters)
@@ -52,13 +55,13 @@ $149 (one-time purchase)
 | 4 | `screenshot-3.png` | Admin dashboard with user stats |
 | 5 | `screenshot-5.png` | Documentation quality (setup guide) |
 
-**EXCLURE** : `screenshot-4.png` (pricing page — cree de la confusion avec le modele one-time purchase sur Gumroad)
+**EXCLURE** : `screenshot-4.png` (pricing page)
 
 ## Links
 
 | Field | URL |
 |-------|-----|
-| Website | https://bydaewon.gumroad.com/l/claude-saas-starter |
+| Website | https://github.com/alexisberdah/claude-streaming-nextjs |
 | Twitter | https://x.com/bydaewon |
 
 ---
@@ -68,61 +71,66 @@ $149 (one-time purchase)
 ```
 Hey Product Hunt!
 
-I'm Daewon, indie dev building AI-powered tools. I built Claude SaaS Starter because every boilerplate I found was OpenAI-first. Claude Sonnet 4.5 has better streaming and longer context, but zero dedicated tooling existed.
+I'm Daewon, indie dev building AI-powered tools.
 
-So I built the first Claude-optimized Next.js starter kit from scratch.
+I built Claude SaaS Starter because every boilerplate I found was OpenAI-first. Claude's streaming API works differently — the Anthropic SDK returns a different event structure, and you need a custom ReadableStream transform to pipe it as SSE.
 
-What's different:
+So I built the streaming module from scratch and open-sourced it:
+https://github.com/alexisberdah/claude-streaming-nextjs
 
-- Claude-first SSE streaming on Edge Runtime (sub-200ms time-to-first-token)
-- Custom useClaudeStream React hook with real-time text deltas and error recovery
-- Non-blocking usage metering via Supabase REST API
-- Full Stripe webhook lifecycle (checkout, updates, cancellations, failed payments)
-- 40 tests (92-100% coverage), 1,300+ lines of documentation across 4 guides
+The open-source part gives you:
+- Edge Runtime API route (transforms Anthropic SDK events → SSE)
+- useClaudeStream React hook (SSE parsing, text delta buffering, error recovery)
+- Minimal example (clone and run in 2 minutes)
 
-The full stack: Next.js 16 (App Router, TypeScript, Tailwind 4, shadcn/ui), Supabase (Auth + PostgreSQL + RLS), Anthropic SDK, Stripe.
+The full paid boilerplate ($149) adds everything else for production:
+- Supabase Auth (email + Google/GitHub OAuth) with middleware route protection
+- Stripe subscriptions with full webhook lifecycle handling
+- Admin dashboard (user management, usage analytics)
+- 40 tests (92-100% coverage)
+- 1,300+ lines of documentation across 4 setup guides
 
-The documentation assumes zero prior knowledge of Supabase, Stripe, or the Anthropic API. Each guide includes troubleshooting for the 10 most common issues.
+The documentation assumes zero prior knowledge of Supabase, Stripe, or the Anthropic API.
 
-$149 on Gumroad, or $119 with code LAUNCH20 (first 50 buyers).
+Start with the free repo. If you need the full production stack, the boilerplate saves ~40 hours of wiring: https://bydaewon.gumroad.com/l/claude-saas-starter (code LAUNCH20 for $119).
 
-Happy to answer any technical questions about the Claude streaming implementation or the architecture decisions.
+Happy to answer any technical questions!
 ```
 
 ---
 
-## Launch Day Checklist (Jeudi 12 fev)
+## Launch Day Checklist (~Thu Feb 20)
 
 ### Timing
 
 ```
-Paris: 9:01am CET = 12:01am PST (debut du jour PH)
+Seoul: 17:01 KST = 12:01am PST (debut du jour PH)
 ```
 
 ### Sequence
 
-- [ ] 9:00am : Verifier que Gumroad est live + coupon LAUNCH20 actif
-- [ ] 9:01am : Soumettre le produit sur PH (ou le hunter le fait)
-- [ ] 9:03am : Poster le maker comment (copier ci-dessus)
-- [ ] 9:05am : Tweet de lancement + pin
-- [ ] 9:10am : Commencer les DMs (50-100 personnes)
-- [ ] 9:00am - 1:00pm : Repondre a CHAQUE commentaire PH < 5 min
-- [ ] Toute la journee : Rester disponible, engager partout
+- [ ] Verify GitHub repo is public + README polished
+- [ ] Verify Gumroad is live + coupon LAUNCH20 active
+- [ ] 17:01 KST : Submit product on PH
+- [ ] 17:03 : Post maker comment (copy above)
+- [ ] 17:05 : Launch tweet + pin
+- [ ] 17:10 : Email blast to mini list (collected from GitHub repo)
+- [ ] 17:00-21:00 : Reply to EVERY PH comment < 5 min
+- [ ] All day : Stay available, engage everywhere
 
-### Tweet de lancement (poster + pin)
+### Launch Tweet (post + pin)
 
 ```
 Claude SaaS Starter is LIVE on Product Hunt!
 
-The only Next.js boilerplate built for Claude Sonnet 4.5.
+I open-sourced the Claude streaming module (SSE + React hook):
+https://github.com/alexisberdah/claude-streaming-nextjs
 
-Auth + streaming + Stripe billing + admin dashboard + 40 tests + 1,300 lines of docs.
-
-$119 with code LAUNCH20 (first 50 buyers).
+The full production boilerplate (auth + Stripe + admin + 40 tests + 1,300 lines of docs) is $119 with code LAUNCH20.
 
 [Product Hunt link]
 
-#buildinpublic
+#buildinpublic #opensource
 ```
 
 ---
@@ -137,33 +145,22 @@ Good question. [Reponse specifique avec details techniques.]
 The tradeoff was [X vs Y]. I went with [X] because [raison concrete].
 ```
 
-### "Why not open-source?"
+### "Why not fully open-source?"
 
 ```
-Indie dev building sustainable income from developer tools. The value is in the time saved (40h → 2h) and the documentation quality (1,300 lines, zero assumptions).
+The streaming module (the interesting technical part) is fully open-source. The paid part is SaaS infrastructure — auth, Stripe webhooks, admin dashboard, tests, docs. Useful but not novel.
 
-Happy to share code snippets if that helps evaluate.
+I'm an indie dev building sustainable income. The open-source core is the community contribution; the paid boilerplate is the business model.
 ```
 
 ### "Why paid? / Too expensive"
 
 ```
-40+ hours of development, 1,300 lines of docs. A senior dev at $100/hr would spend $4,000+ building this from scratch. $149 felt like a fair middle ground.
+The open-source streaming module is free — that's the core value.
 
-But genuine question: what price would feel right to you?
-```
+$149 for the full boilerplate saves ~40 hours of wiring (auth, Stripe, admin, tests, docs). A senior dev at $100/hr would spend $4,000+ building it from scratch.
 
-### "This is just a wrapper"
-
-```
-Fair point on the surface, but the implementation details matter:
-
-- Claude's SSE format needs a custom ReadableStream transform (you can't just pipe the Anthropic SDK)
-- Edge Runtime has specific constraints for streaming
-- Stripe webhook lifecycle handling (checkout, updates, cancellations, failed payments) is 500+ lines alone
-- Non-blocking usage metering that doesn't slow down responses
-
-The streaming architecture is the core differentiator. Happy to share specific code if helpful.
+But genuinely: what price would feel right to you?
 ```
 
 ### Positive / Support
@@ -171,10 +168,22 @@ The streaming architecture is the core differentiator. Happy to share specific c
 ```
 Thank you! Appreciate it.
 
-Let me know if you launch something on PH — happy to return the support.
+If you try the open-source module, I'd love to hear how it goes. And let me know if you launch something on PH — happy to return the support.
 ```
 
 ---
 
+## Why this version works better
+
+| Aspect | V1 (Feb 12 plan) | V2 (Feb 20 revised) |
+|--------|-------------------|---------------------|
+| Primary link | Gumroad ($149) | GitHub repo (free) |
+| Pricing display | "$149 (one-time)" | "Free / $149 full stack" |
+| Topics | Developer Tools, SaaS, AI, Tech | Developer Tools, **Open Source**, AI, SaaS |
+| Social proof | None | GitHub stars + community engagement |
+| Pre-launch | Cold | 7-10 days of Reddit engagement + repo feedback |
+
+---
+
 *Created: 2026-02-08*
-*Launch: 2026-02-12 (mercredi)*
+*Revised: 2026-02-10 (postponed to Feb 20, GitHub-first strategy)*

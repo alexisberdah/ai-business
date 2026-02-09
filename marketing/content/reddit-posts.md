@@ -1,211 +1,223 @@
-# Reddit Posts — Claude SaaS Starter Launch
+# Reddit Posts — Claude SaaS Starter (REVISED)
 
-> 3 posts adaptés par subreddit. Chaque post a le bon ton pour sa communauté.
+> Rewritten Feb 10 after r/ClaudeAI (removed: Rule 7) and r/nextjs (removed: Rule 2).
+> Strategy: open-source repo first, paid product as secondary mention only.
 
 ---
 
-## 1. r/SideProject (Samedi 8 fév)
+## 1. r/ClaudeAI (~Feb 18, coordinated launch day)
 
-**Self-promo OK. Story-driven. Feedback genuine.**
+**Rule 7 compliance**: "Must be free to try" — links to free GitHub repo
+**Tone**: Community member sharing a tool, not selling
 
 ### Title
 
 ```
-I built the first Next.js boilerplate specifically for Claude Sonnet 4.5 — looking for feedback
+I open-sourced a Claude streaming module for Next.js — SSE API route + React hook
 ```
 
 ### Body
 
 ```
-Hey r/SideProject,
+I've been building Claude-powered apps and kept re-implementing the same streaming infrastructure. So I extracted the core into an open-source package.
 
-I spent the last few weeks building something I couldn't find anywhere: a production-ready Next.js boilerplate that's actually built for Claude (Anthropic), not OpenAI.
+**The problem it solves**
 
-**The problem I kept running into**
+The Anthropic SDK's `messages.stream()` returns a different event structure than OpenAI. You can't just swap the model name in an OpenAI streaming tutorial. Specifically:
 
-Every time I started a new AI SaaS project with Claude, I'd spend 30-40 hours wiring the same things together: auth, Stripe webhooks, SSE streaming for Claude's response format, usage tracking. The existing boilerplates are all OpenAI-first or "model-agnostic" (which really means OpenAI with a wrapper).
-
-Claude's streaming works differently from OpenAI — the Anthropic SDK uses Server-Sent Events with a different event structure, and most "AI templates" just don't handle it well.
-
-**What I built**
-
-Claude SaaS Starter — a Next.js 16 boilerplate with:
-
-- Supabase Auth (email + Google/GitHub OAuth)
-- Claude streaming via SSE on Edge Runtime (sub-200ms time-to-first-token)
-- Stripe subscriptions with full webhook handling
-- Admin dashboard with user management
-- Usage metering (token tracking + cost estimation)
-- 40 tests (unit + integration)
-- 4 setup guides, 1,300+ lines of documentation
-
-**What I learned building it**
-
-1. Stripe webhooks are the hardest part of any SaaS. Testing them locally with ngrok is painful but necessary. I documented every edge case.
-2. Claude's SSE format needs a custom ReadableStream transform — you can't just pipe the Anthropic SDK response to the client.
-3. Documentation > features. I spent almost as much time writing guides as writing code. The setup guides assume zero prior knowledge of Supabase, Stripe, or the Anthropic API.
-
-**Screenshots**
-
-[Screenshot 1 — Chat interface with Claude streaming in real-time]
-[Screenshot 2 — Admin dashboard with user stats]
-
-**Pricing**
-
-$149 on Gumroad (or $119 with code LAUNCH20 — first 50 buyers).
-
-I know pricing is always controversial. My logic: a senior dev at $100/hr would spend 40+ hours building this from scratch. $149 seemed like a fair middle ground — serious enough to signal quality, accessible enough for indie budgets.
-
-→ https://bydaewon.gumroad.com/l/claude-saas-starter
-
-**Genuine question**
-
-What would make you actually buy a boilerplate vs. building from scratch? I'm trying to understand what tips the scale for developers. Is it documentation quality? Test coverage? The time savings? Something else?
-
-Would love honest feedback — both positive and critical.
-```
-
----
-
-## 2. r/ClaudeAI (Lundi 9 fév — 10am KST)
-
-**Community technique Claude. Focus sur les détails spécifiques à l'API Anthropic.**
-
-### Title
-
-```
-Built a production-ready Next.js starter kit for Claude's streaming API — open to feedback
-```
-
-### Body
-
-```
-I've been building Claude-powered apps for a while and got tired of re-implementing the same streaming infrastructure every time. So I built a boilerplate specifically for Claude — not adapted from an OpenAI template.
-
-**Why Claude needs its own boilerplate**
-
-Most "AI SaaS" templates use the Vercel AI SDK or OpenAI's client. When you try to use them with Claude, you hit friction:
-
-- The Anthropic SDK's `messages.stream()` returns a different event structure than OpenAI's streaming
-- Server-Sent Events from Claude need a custom ReadableStream transform on Edge Runtime
+- SSE events need a custom ReadableStream transform (the SDK's `.toReadableStream()` gives you raw events, not formatted SSE)
 - Token counting works differently (input_tokens + output_tokens in the final message event)
-- Error handling for rate limits and overloaded responses requires Anthropic-specific logic
+- Error handling for rate limits (429) and overloaded (529) needs Anthropic-specific logic
 
-**The streaming architecture**
+**What's in the repo**
+
+- Edge Runtime API route that transforms Anthropic SDK streams into SSE
+- `useClaudeStream` React hook — handles SSE parsing, text delta buffering, error recovery
+- Minimal example (Next.js App Router)
+- MIT license
+
+GitHub: https://github.com/alexisberdah/claude-streaming-nextjs
+
+**Architecture**
 
 ```
 Client → fetch('/api/claude/stream') → Edge Runtime → Anthropic SDK → SSE → Client
 ```
 
-The API route uses `anthropic.messages.stream()` and transforms it into SSE events. On the client side, a custom `useClaudeStream` React hook handles:
+The hook gives you `{ messages, isStreaming, error, sendMessage }` — drop it into any React component.
 
-- Parsing the SSE event stream via ReadableStream reader
-- Buffering partial events (SSE can split across chunks)
-- Appending text deltas to the assistant message in real-time
-- Error recovery and cleanup
+**Key implementation detail**
 
-The hook gives you `{ messages, isStreaming, error, sendMessage, clearMessages }` — type-safe and ready to drop into any React component.
+SSE events can arrive split across chunks. The hook buffers partial events (`buffer = lines.pop() || ''`) and prepends them to the next chunk. Without this, you get JSON parse errors on ~5% of streams.
 
-**What's included beyond streaming**
+---
 
-- Supabase Auth (email + OAuth) with middleware-based route protection
-- Stripe subscriptions (monthly + yearly) with webhook handling for the full subscription lifecycle
-- Admin dashboard (user management, subscription overview, usage analytics)
-- Usage metering — every API call is logged with token counts and cost estimation
-- 40 tests, 1,300+ lines of documentation across 4 guides
+I also built a full SaaS boilerplate around this (auth, Stripe, admin, 40 tests) that's available as a paid option, but the streaming module is the part I thought would be most useful to the community on its own.
 
-**Link**
-
-$149 on Gumroad (or $119 with LAUNCH20): https://bydaewon.gumroad.com/l/claude-saas-starter
-
-Happy to answer any technical questions about the Claude streaming implementation or the architecture decisions.
+Happy to answer questions about the Claude API streaming edge cases.
 ```
 
 ---
 
-## 3. r/nextjs (Mardi 10 fév — 10am KST)
+## 2. r/nextjs (~Feb 18, coordinated launch day)
 
-**100% technique. Architecture walkthrough. Mention produit minimale.**
+**Rule 2 compliance**: "No shilling" — pure technical content, zero commercial links in body
+**Tone**: Architecture walkthrough, asking for technical feedback
 
 ### Title
 
 ```
-Shipping a Next.js 16 boilerplate with Supabase Auth + Stripe + Claude streaming — architecture walkthrough
+How I handle Claude (Anthropic) SSE streaming on Next.js Edge Runtime — open-source hook + API route
 ```
 
 ### Body
 
 ```
-I just shipped a production Next.js 16 (App Router) boilerplate and wanted to share the architecture decisions for anyone building similar SaaS apps. The focus is AI streaming (Claude/Anthropic), but the auth + billing patterns apply to any SaaS.
+I've been working on Claude API streaming in Next.js and wanted to share the architecture + get feedback from the community. I open-sourced the implementation.
 
-**Stack**
+**Why Claude streaming is different from OpenAI**
 
-- Next.js 16 (App Router, TypeScript, Tailwind 4, shadcn/ui)
-- Supabase (Auth + PostgreSQL + RLS)
-- Anthropic SDK (Claude streaming via SSE)
-- Stripe (subscriptions + webhooks)
+Most AI streaming tutorials use OpenAI or the Vercel AI SDK. If you use the Anthropic SDK directly, you hit a few gotchas:
 
-**Auth architecture**
+1. `anthropic.messages.stream()` emits `text`, `message`, and `error` events — not a standard readable stream you can pipe
+2. You need a custom `ReadableStream` to transform these into `data: {json}\n\n` SSE format
+3. On Edge Runtime, you can't use Node.js stream APIs — everything goes through Web Streams
+4. Partial SSE chunks arrive ~5% of the time and will break JSON.parse without buffering
 
-Using Supabase Auth with middleware-based route protection. The key pattern:
+**The implementation**
 
-- `middleware.ts` checks the Supabase session on every request to protected routes
-- OAuth callbacks (Google, GitHub) handled via Supabase's built-in flow
-- Admin role stored in Supabase user metadata, checked server-side
-- RLS policies enforce authorization at the database level
+Two files:
 
-**Claude streaming on Edge Runtime**
+**API Route** (`app/api/claude/stream/route.ts`):
+- Runs on Edge Runtime (`export const runtime = 'edge'`)
+- Calls `anthropic.messages.stream()` with the SDK
+- Wraps in a `ReadableStream` that formats events as SSE
+- Handles `text` (delta), `message` (completion + usage data), and `error` events separately
+- Returns `Response` with `text/event-stream` headers
 
-This was the trickiest part. The API route runs on Edge Runtime (`export const runtime = 'edge'`) for global low-latency.
+**React Hook** (`useClaudeStream.ts`):
+- `fetch` POST to the API route
+- Reads response via `ReadableStreamDefaultReader`
+- Buffers partial SSE chunks (the key: `buffer = lines.pop() || ''`)
+- Appends text deltas to assistant message state in real-time
+- Returns `{ messages, isStreaming, error, sendMessage, clearMessages }`
 
-The flow:
-1. Client sends messages via `fetch` POST
-2. Edge route calls `anthropic.messages.stream()` with the Anthropic SDK
-3. The SDK's stream events get transformed into SSE format via a custom `ReadableStream`
-4. Client parses SSE events through a `ReadableStreamDefaultReader`, buffering partial chunks
-5. A React hook (`useClaudeStream`) manages the message state, streaming status, and error handling
+**Performance on Vercel Edge**:
+- Time-to-first-token: ~150-200ms (Anthropic API latency dominates)
+- Edge overhead: <50ms
+- No cold starts
 
-Key gotcha: you can't just pipe the Anthropic SDK stream directly. You need to transform the events into `data: {json}\n\n` SSE format and handle the `text`, `message` (completion), and `error` event types separately.
+**GitHub**: https://github.com/alexisberdah/claude-streaming-nextjs
 
-**Stripe webhook handling**
-
-The webhook route handles the full subscription lifecycle:
-- `checkout.session.completed` → create subscription record
-- `customer.subscription.updated` → sync status changes
-- `customer.subscription.deleted` → handle cancellation
-- `invoice.payment_failed` → notify user
-
-Each event updates a `subscriptions` table in Supabase. The webhook verifies signatures with `stripe.webhooks.constructEvent()`.
-
-**Usage metering**
-
-Every Claude API call gets logged non-blocking (fire-and-forget `fetch` to Supabase REST API from Edge Runtime). Tracks:
-- Input/output tokens
-- Request duration
-- Cost estimation ($3/MTok input, $15/MTok output for Sonnet)
-- Error logging
-
-The admin dashboard aggregates this into per-user and 30-day rolling summaries.
-
-**Testing**
-
-40 tests across Vitest:
-- Stripe webhook handlers (7 tests, 92% coverage)
-- Admin role checking (9 tests)
-- Subscription validation (8 tests, 100% coverage)
-- Usage logging (16 tests, 100% coverage)
-
-**Documentation**
-
-4 setup guides (1,300+ lines total): general setup, Stripe configuration, OAuth setup, and a quick-start guide. Each includes troubleshooting sections for the 10 most common issues.
-
----
-
-The full boilerplate is available on Gumroad ($149, or $119 with code LAUNCH20): https://bydaewon.gumroad.com/l/claude-saas-starter
-
-Happy to discuss any of the architectural decisions — especially interested in how others are handling AI streaming in Next.js App Router.
+I'm curious how others are handling AI streaming in App Router. Are you using the Vercel AI SDK, or rolling your own? Any edge cases I might be missing?
 ```
 
 ---
 
+## 3. r/webdev (~Feb 18 or Feb 19, 1 day after main launch)
+
+**Tone**: Educational, focuses on the SSE/streaming pattern (not Claude-specific)
+**Strategy**: Broader developer audience, links to repo as reference implementation
+
+### Title
+
+```
+Lessons learned implementing Server-Sent Events with AI streaming on Edge Runtime (Next.js + Claude)
+```
+
+### Body
+
+```
+I've been building real-time AI streaming and ran into several SSE edge cases that aren't well-documented. Sharing what I learned in case it helps others.
+
+**Context**: I built a streaming integration for Claude (Anthropic's AI) on Next.js Edge Runtime. The patterns apply to any SSE implementation, not just AI.
+
+**Lesson 1: You can't pipe SDK streams directly as SSE**
+
+Most AI SDKs give you a stream object, but it's not in SSE format. You need to:
+
+1. Listen for specific event types (`text`, `message`, `error`)
+2. Format each as `data: ${JSON.stringify(payload)}\n\n`
+3. Enqueue into a `ReadableStream` controller
+4. Close the controller when the stream ends
+
+This is Web Streams API, not Node.js streams — important distinction on Edge Runtime.
+
+**Lesson 2: SSE chunks split across reads (~5% of the time)**
+
+When reading SSE via `ReadableStreamDefaultReader`, a single `read()` call might return a partial event. For example:
+
+```
+// First read:
+"data: {\"type\":\"text\",\"te"
+
+// Second read:
+"xt\":\"Hello\"}\n\n"
+```
+
+The fix: buffer incomplete lines and prepend to the next chunk.
+
+```typescript
+const lines = buffer.split('\n\n')
+buffer = lines.pop() || ''  // Keep the incomplete line
+```
+
+Without this, you get intermittent JSON parse errors that are painful to debug.
+
+**Lesson 3: Edge Runtime has no Node.js stream APIs**
+
+On Vercel Edge (or Cloudflare Workers), you can't use `Readable.from()` or `pipeline()`. Everything must use the Web Streams API (`ReadableStream`, `ReadableStreamDefaultReader`).
+
+**Lesson 4: Error events need special handling**
+
+If the upstream API errors mid-stream, you need to:
+1. Send an error event to the client (`data: {"type":"error","error":"message"}`)
+2. Close the stream controller
+3. On the client, detect the error event and stop reading
+
+Just closing the stream without an error event leaves the client hanging.
+
+**The implementation**
+
+I open-sourced the full thing: https://github.com/alexisberdah/claude-streaming-nextjs
+
+It's Claude-specific but the SSE patterns are generic. Two files: an Edge API route + a React hook.
+
+Anyone else building real-time streaming on Edge Runtime? What patterns have you found useful?
+```
+
+---
+
+## Notes globales
+
+### Strategie d'engagement pre-post (Feb 10-17)
+
+Avant de poster, construire la credibilite sur chaque sub :
+
+**r/ClaudeAI** (5-10 reponses utiles):
+- Repondre aux questions sur Claude API, streaming, token management
+- Partager des tips sur l'Anthropic SDK
+- Sujets cibles : "Claude vs GPT for coding", "Claude API rate limits", "streaming issues"
+
+**r/nextjs** (5-10 reponses utiles):
+- Repondre aux questions sur App Router, Edge Runtime, Server Components
+- Sujets cibles : "SSE in Next.js", "real-time streaming", "Edge vs Serverless"
+
+**r/webdev** (3-5 reponses utiles):
+- Repondre aux questions sur SSE, WebSockets vs SSE, streaming patterns
+- Sujets cibles : "real-time updates", "server-sent events", "streaming API"
+
+### Differences cles vs version 1
+
+| Aspect | Version 1 (supprimee) | Version 2 (revisee) |
+|--------|----------------------|---------------------|
+| Lien principal | Gumroad ($149) | GitHub repo (gratuit) |
+| Tone | "Buy my boilerplate" | "Here's a tool I built" |
+| Mention payante | Dans le body | Footnote ou absente |
+| Compliance | Violait Rule 7 + Rule 2 | Conforme |
+| Engagement pre-post | 0 comments | 15-20 comments utiles |
+
+---
+
 *Created: 2026-02-08*
+*Revised: 2026-02-10 (complete rewrite — GitHub-first, rule-compliant)*

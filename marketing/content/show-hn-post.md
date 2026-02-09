@@ -1,97 +1,87 @@
-# Show HN Post — Claude SaaS Starter
+# Show HN Post — Claude SaaS Starter (REVISED)
 
-> Draft pour Hacker News. Ton technique et humble. Pas de marketing.
+> Rewritten to center on open-source GitHub repo, not Gumroad.
+> Previous version (Feb 9): 1 point, 0 comments — dead.
 
-**Timing** : Lundi 9 fév, 23h KST (9am EST)
+**Timing** : ~Feb 18 (mardi), 9am EST — coordinated with Reddit + Twitter
+**Pre-requisite** : GitHub repo `claude-streaming-nextjs` must be published first
 
 ---
 
 ## Title
 
 ```
-Show HN: Claude SaaS Starter – Next.js boilerplate built for Claude's streaming API
+Show HN: Claude Streaming for Next.js — open-source SSE + React hook
 ```
 
 ## URL
 
 ```
-https://bydaewon.gumroad.com/l/claude-saas-starter
+https://github.com/alexisberdah/claude-streaming-nextjs
 ```
 
-## Maker Comment (post immédiatement après)
+## Maker Comment (post immediately after)
 
 ```
 Hi HN,
 
-I built this because every SaaS boilerplate I found was OpenAI-first. Claude's SSE streaming differs from OpenAI's — the Anthropic SDK's messages.stream() returns a different event structure, and you need a custom ReadableStream transform to pipe it as Server-Sent Events on Edge Runtime.
+I open-sourced the streaming module from my Claude SaaS project. It solves a specific problem: Anthropic's SDK returns a different event structure than OpenAI, and you can't just pipe it as SSE to the client.
 
-The stack:
+What's in the repo:
 
-- Next.js 16 (App Router, TypeScript)
-- Supabase for auth and PostgreSQL (with RLS)
-- Anthropic SDK for Claude streaming
-- Stripe for subscription billing (full webhook lifecycle)
-- Vitest for testing (40 tests)
+- An Edge Runtime API route that transforms Anthropic SDK stream events into SSE format
+- A React hook (useClaudeStream) that handles SSE parsing, text delta buffering, and error recovery
+- A minimal example you can run with `npx create-next-app` + `npm install`
 
-The streaming API route transforms Anthropic SDK events into SSE format and runs on Edge Runtime for low-latency. On the client, a React hook (useClaudeStream) handles SSE parsing, text delta buffering, and error recovery.
+The key implementation detail: the Anthropic SDK's `messages.stream()` emits `text`, `message`, and `error` events. You need a custom ReadableStream to normalize these into `data: {json}\n\n` SSE format. The hook on the client side buffers partial events (SSE can split across chunks) and handles reconnection.
 
-The non-streaming parts are fairly standard SaaS infrastructure: Supabase Auth with middleware route protection, Stripe webhooks for the subscription lifecycle (checkout, updates, cancellations, failed payments), usage metering that logs token counts non-blocking via the Supabase REST API.
+I built this while putting together a full SaaS boilerplate with auth, Stripe, admin dashboard, etc. The streaming was the trickiest part to get right, so I figured it would be the most useful piece to open-source separately.
 
-I wrote 1,300 lines of documentation across 4 guides — setup, Stripe configuration, OAuth setup, and a quick-start. The guides assume zero prior knowledge of Supabase, Stripe, or the Anthropic API.
+The full production boilerplate (auth + billing + admin + 40 tests + docs) is available as a paid option if anyone needs the complete stack: https://bydaewon.gumroad.com/l/claude-saas-starter
 
-$149 on Gumroad (or $119 with code LAUNCH20).
-
-Happy to answer technical questions about the Claude streaming implementation or any of the architecture decisions.
+Happy to answer questions about the SSE implementation or Claude-specific edge cases.
 ```
 
 ---
 
 ## Notes pour le jour J
 
-### À faire
+### A faire
 - [ ] Poster entre 9-10am EST (pic de trafic HN)
 - [ ] Poster le maker comment dans les 2 minutes
-- [ ] Rester disponible 4-6h pour répondre à chaque commentaire
-- [ ] Ton : factuel, technique, humble. Zéro emojis sur HN.
+- [ ] Rester disponible 4-6h pour repondre a chaque commentaire
+- [ ] Ton : factuel, technique, humble. Zero emojis sur HN.
 
-### Risques identifiés
+### Why this works better than v1
 
-1. **Lien vers page de vente (pas de code visible)**
-   - Mitigation : le maker comment est très technique, montre qu'on sait de quoi on parle
-   - Si quelqu'un demande du code : partager des snippets dans les commentaires
+1. **Links to GitHub** (not a sales page) — HN rewards open-source
+2. **Focused scope** — one module, not "here's everything I built"
+3. **The paid part is a footnote** in the maker comment, not the pitch
+4. **Technical depth** — explains the actual problem solved (SSE transform)
+5. **Free to try** — anyone can clone and run it
 
-2. **"Why not open-source?"**
-   - Réponse honnête : "I'm an indie dev trying to build sustainable income from developer tools. The code quality and documentation are the value — happy to share more snippets if that helps evaluate."
+### Reponses types
 
-3. **"This is just a wrapper"**
-   - Réponse : expliquer les différences techniques concrètes (SSE transform, Edge Runtime compatibility, non-blocking usage logging, full Stripe webhook lifecycle)
-
-4. **Pricing pushback**
-   - Réponse : "40+ hours of development, 1,300 lines of docs. The math works out to about $3.50/hr of saved development time."
-
-### Réponses types
-
-**Question technique :**
+**"Why not just use Vercel AI SDK?"**
 ```
-Good question. [Answer with specifics and code snippets if relevant.]
+Good question. The Vercel AI SDK supports Anthropic, but it abstracts away the streaming layer. If you want control over the SSE format, custom error handling, or need to add usage metering at the stream level, you need the lower-level approach.
 
-The tradeoff was [X vs Y]. I went with [X] because [concrete reason].
+This gives you the raw SSE events so you can build whatever you need on top.
 ```
 
-**Critique constructive :**
+**"This is pretty simple code"**
 ```
-Fair point. [Acknowledge the valid part.]
-
-[Explain your reasoning or concede if they're right.]
+Fair point — it's intentionally minimal. The tricky part isn't the code volume, it's knowing which Anthropic SDK events to handle and how to buffer partial SSE chunks. I spent a few hours debugging edge cases that aren't documented.
 ```
 
-**"Why paid?" :**
+**"Why paid for the rest?"**
 ```
-Indie dev building sustainable products. The value is in the time saved (40h → 2h) and the documentation quality (1,300 lines, zero assumptions).
+The streaming module is the interesting technical problem. The paid part is SaaS infrastructure (auth, Stripe webhooks, admin dashboard, tests, docs) — useful but not novel enough to open-source.
 
-Happy to share more code snippets if that helps evaluate whether it's worth it for your use case.
+Indie dev trying to build sustainable income. The open-source part is the core value; the paid part saves you 30-40h of boilerplate wiring.
 ```
 
 ---
 
 *Created: 2026-02-08*
+*Revised: 2026-02-10 (pivot to GitHub-first strategy)*

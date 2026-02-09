@@ -1,13 +1,16 @@
 # Building a Production-Ready Claude Streaming API with Next.js Edge Runtime
 
-> Article technique pour Dev.to. Publish lundi 9 fév (10am KST).
+> Article technique pour Dev.to. Already published Feb 9.
 > Tags: #nextjs #claude #ai #webdev
+> UPDATE Feb 10: Add GitHub repo link + softer CTA
 
 ---
 
-<!-- DÉBUT ARTICLE — copier ci-dessous dans Dev.to -->
+<!-- DEBUT ARTICLE — copier ci-dessous dans Dev.to -->
 
 Every AI tutorial shows you OpenAI streaming. But if you're building with Claude (Anthropic), the implementation is meaningfully different. Here's how I built a production-ready streaming API for Claude Sonnet using Next.js Edge Runtime and Server-Sent Events.
+
+**Update**: I've open-sourced the streaming module as a standalone package. You can grab it here: [claude-streaming-nextjs on GitHub](https://github.com/alexisberdah/claude-streaming-nextjs)
 
 ## The Problem
 
@@ -282,21 +285,36 @@ With this architecture on Vercel Edge:
 
 The bottleneck is always the Anthropic API response time, not your infrastructure.
 
+## Get the Code
+
+The streaming module (API route + React hook + example) is **open-source on GitHub**:
+
+**[claude-streaming-nextjs](https://github.com/alexisberdah/claude-streaming-nextjs)** — MIT license, clone and run in 2 minutes.
+
 ## The Full Picture
 
-The streaming API is one piece of a production SaaS. You also need:
+The streaming API is one piece of a production SaaS. If you need the complete stack — authentication (Supabase Auth), billing (Stripe subscriptions with full webhook lifecycle), admin dashboard, usage metering, 40 tests, and 1,300+ lines of documentation — I packaged it all into [Claude SaaS Starter](https://bydaewon.gumroad.com/l/claude-saas-starter) ($149).
 
-- **Authentication** — Supabase Auth with middleware route protection
-- **Billing** — Stripe subscriptions with webhook handling for the full lifecycle
-- **Admin** — User management dashboard with usage analytics
-- **Tests** — 40 tests covering webhook handlers, auth, subscriptions, and usage logging
-
-I packaged all of this into [Claude SaaS Starter](https://bydaewon.gumroad.com/l/claude-saas-starter) — a production-ready Next.js 16 boilerplate with 1,300+ lines of documentation. $149, or $119 with code `LAUNCH20`.
-
-But the streaming architecture above is the core pattern. If you're building with Claude and Next.js, this is the foundation you need.
+But the streaming architecture above is the core pattern, and it's free. If you're building with Claude and Next.js, start with the GitHub repo.
 
 ---
 
 *Have questions about the implementation? Drop them in the comments — happy to go deeper on any part of the architecture.*
 
 <!-- FIN ARTICLE -->
+
+---
+
+## Update Notes (Feb 10)
+
+**Changes from published version**:
+1. Added "Update" banner at top with GitHub repo link
+2. Replaced direct Gumroad CTA with GitHub repo as primary CTA
+3. Gumroad mention moved to secondary "Full Picture" section with softer tone
+4. Flow is now: article (free) -> repo (free) -> "want everything? -> paid"
+5. No more bait-and-switch feeling
+
+**To update on Dev.to**:
+- Edit the existing article at https://dev.to/bydaewon/building-a-production-ready-claude-streaming-api-with-nextjs-edge-runtime-3e7
+- Add the "Update" banner after the first paragraph
+- Replace the final CTA section

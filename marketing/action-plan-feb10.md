@@ -93,14 +93,14 @@ Alternatives a lister sur AlternativeTo :
 | Action | Status | Date | Resultat |
 |--------|--------|------|----------|
 | Gumroad affilies | BLOCKED | Feb 10 | Gumroad Discover requiert min 1 vente |
-| AlternativeTo | TODO | | Requiert compte — creer manuellement |
+| AlternativeTo | TODO | | Cloudflare bloque automation — creer manuellement |
 | BoilerplateList | DONE | Feb 10 | Soumis avec succes |
 | BoilerplateHub | BLOCKED | Feb 10 | Requiert programme affiliation |
 | DevHunt | TODO | | Requiert GitHub login navigateur |
-| Uneed | TODO | | Requiert compte — creer manuellement |
-| SaaS Boilerplates | TODO | | Requiert compte — creer manuellement |
+| Uneed | TODO | | Cloudflare Turnstile bloque — creer manuellement |
+| SaaS Boilerplates | ACCOUNT | Feb 10 | Compte cree — confirmer email puis soumettre |
 | MicroLaunch | BLOCKED | Feb 10 | Basic Launch complet, seul Pro ($) dispo |
-| BetaList | TODO | | Requiert compte — creer manuellement |
+| BetaList | ACCOUNT | Feb 10 | Compte cree (bydaewon) — confirmer email, besoin domaine custom |
 | Launching Next | DONE | Feb 10 | Soumis #125500, review standard (gratuit) |
 | Buildkits.dev | TODO | | Envoyer email a peter@sidejar.co |
 | NextJSStarter | DONE | Feb 10 | Soumis #004968, Free Listing |

@@ -92,21 +92,21 @@ Alternatives a lister sur AlternativeTo :
 
 | Action | Status | Date | Resultat |
 |--------|--------|------|----------|
-| Gumroad affilies | Pending | | |
-| AlternativeTo | Pending | | |
-| BoilerplateList | Pending | | |
-| BoilerplateHub | Pending | | |
-| DevHunt | Pending | | |
-| Uneed | Pending | | |
-| SaaS Boilerplates | Pending | | |
-| MicroLaunch | Pending | | |
-| BetaList | Pending | | |
-| Launching Next | Pending | | |
-| Buildkits.dev | Pending | | |
-| NextJSStarter | Pending | | |
-| IH page produit | Pending | | |
-| IH post | Pending | | |
-| Medium article | Pending | | |
+| Gumroad affilies | BLOCKED | Feb 10 | Gumroad Discover requiert min 1 vente |
+| AlternativeTo | TODO | | Requiert compte — creer manuellement |
+| BoilerplateList | DONE | Feb 10 | Soumis avec succes |
+| BoilerplateHub | BLOCKED | Feb 10 | Requiert programme affiliation |
+| DevHunt | TODO | | Requiert GitHub login navigateur |
+| Uneed | TODO | | Requiert compte — creer manuellement |
+| SaaS Boilerplates | TODO | | Requiert compte — creer manuellement |
+| MicroLaunch | BLOCKED | Feb 10 | Basic Launch complet, seul Pro ($) dispo |
+| BetaList | TODO | | Requiert compte — creer manuellement |
+| Launching Next | DONE | Feb 10 | Soumis #125500, review standard (gratuit) |
+| Buildkits.dev | TODO | | Envoyer email a peter@sidejar.co |
+| NextJSStarter | DONE | Feb 10 | Soumis #004968, Free Listing |
+| IH page produit | TODO | | Requiert compte IH |
+| IH post | TODO | | Contenu pret dans content/indie-hackers-post.md |
+| Medium article | TODO | | Contenu pret dans content/medium-article-claude-vs-openai.md |
 
 ---
 

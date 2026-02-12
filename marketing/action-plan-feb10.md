@@ -96,17 +96,17 @@ Alternatives a lister sur AlternativeTo :
 | AlternativeTo | TODO | | Cloudflare bloque automation — creer manuellement |
 | BoilerplateList | DONE | Feb 10 | Soumis avec succes |
 | BoilerplateHub | BLOCKED | Feb 10 | Requiert programme affiliation |
-| DevHunt | TODO | | Requiert GitHub login navigateur |
+| DevHunt | BLOCKED | Feb 12 | Requiert GitHub password (pas stocke) pour OAuth navigateur |
 | Uneed | TODO | | Cloudflare Turnstile bloque — creer manuellement |
 | SaaS Boilerplates | ACCOUNT | Feb 10 | Compte cree — confirmer email puis soumettre |
 | MicroLaunch | BLOCKED | Feb 10 | Basic Launch complet, seul Pro ($) dispo |
 | BetaList | ACCOUNT | Feb 10 | Compte cree (bydaewon) — confirmer email, besoin domaine custom |
 | Launching Next | DONE | Feb 10 | Soumis #125500, review standard (gratuit) |
-| Buildkits.dev | TODO | | Envoyer email a peter@sidejar.co |
+| Buildkits.dev | DONE | Feb 12 | Email envoye a peter@sidejar.co |
 | NextJSStarter | DONE | Feb 10 | Soumis #004968, Free Listing |
-| IH page produit | TODO | | Requiert compte IH |
-| IH post | TODO | | Contenu pret dans content/indie-hackers-post.md |
-| Medium article | TODO | | Contenu pret dans content/medium-article-claude-vs-openai.md |
+| IH page produit | PARTIAL | Feb 12 | Signup commence (username bydaewon OK, 3 etapes OK) — birthday field bloque par Ember.js, finir manuellement |
+| IH post | TODO | | Contenu pret — publier apres creation compte |
+| Medium article | TODO | | Cloudflare bloque automation — publier manuellement |
 
 ---
 
